@@ -1,6 +1,6 @@
 const routes = {
   index :'/',
-  home: '/index',
+  home: '/',
   profileProfile : '/profile/profile',
   profileSubnames : '/profile/subnames',
   profileTransfer : '/profile/transfer',

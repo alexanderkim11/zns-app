@@ -129,7 +129,7 @@ const ProfileMore: NextPageWithLayout = () => {
     const dataFetch2 = async () => {
       const response = await (
         await fetch(
-          "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_3.aleo/mapping/primary_name/" + publicKey,
+          "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_4.aleo/mapping/primary_name/" + publicKey,
           {headers: {'Content-Type': 'application/json'}, method: "GET"}
         )
       ).json();
@@ -145,7 +145,7 @@ const ProfileMore: NextPageWithLayout = () => {
         if (!publicKey) throw new WalletNotConnectedError();
         console.log(currentName.replace('.zexe',''));
         const inputs = ["6837765u128", encode_name(currentName.replace('.zexe','')) + "u128", "0u128"];
-        let programId = 'zns_registry_v1_3.aleo';
+        let programId = 'zns_registry_v1_4.aleo';
         let functionName = 'set_primary2';
         let fee = 5000000;
         const aleoTransaction = Transaction.createTransaction(
@@ -194,7 +194,7 @@ const ProfileMore: NextPageWithLayout = () => {
     const { wallet, publicKey, requestRecords } = useWallet();
     const [isOwner, setIsOwner] = useState(false);
     const rr = async () => {
-      return await requestRecords!('zns_registry_v1_3.aleo');
+      return await requestRecords!('zns_registry_v1_4.aleo');
     }
     const checkDeed = async () => {
         if (!publicKey) throw new WalletNotConnectedError();

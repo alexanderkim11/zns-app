@@ -134,7 +134,7 @@ const ProfileTransfer: NextPageWithLayout = () => {
     const dataFetch2 = async () => {
       const response = await (
         await fetch(
-          "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_3.aleo/mapping/primary_name/" + publicKey,
+          "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_4.aleo/mapping/primary_name/" + publicKey,
           {headers: {'Content-Type': 'application/json'}, method: "GET"}
         )
       ).json();
@@ -149,7 +149,7 @@ const ProfileTransfer: NextPageWithLayout = () => {
         let encoded_name : string = encode_name(name.replace('.zexe',''))
         const response = await (
           await fetch(
-            "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_3.aleo/mapping/domains/%7Btld:6837765u128,name:" + encoded_name + "u128,subname:0u128%7D",
+            "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_4.aleo/mapping/domains/%7Btld:6837765u128,name:" + encoded_name + "u128,subname:0u128%7D",
             {headers: {'Content-Type': 'application/json'}, method: "GET"}
           )
         ).json();
@@ -168,7 +168,7 @@ const ProfileTransfer: NextPageWithLayout = () => {
         let reciever = document.getElementById('transfer-input-private').value;
     
         const inputs = [reciever, deed];
-        let programId = 'zns_registry_v1_3.aleo';
+        let programId = 'zns_registry_v1_4.aleo';
         let functionName = (ownerHidden ? 'transfer_private_to_private' : 'transfer_public_to_private')
         let fee = 5;
     
@@ -189,7 +189,7 @@ const ProfileTransfer: NextPageWithLayout = () => {
         if (!publicKey) throw new WalletNotConnectedError();
         let reciever = document.getElementById('transfer-input-public').value;
         const inputs = [reciever, deed];
-        let programId = 'zns_registry_v1_3.aleo';
+        let programId = 'zns_registry_v1_4.aleo';
         let functionName = (ownerHidden ? 'transfer_private_to_public' : 'transfer_public_to_public')
         let fee = 5;
     
@@ -250,7 +250,7 @@ const ProfileTransfer: NextPageWithLayout = () => {
 
     const checkDeed = async () => {
         if (!publicKey) throw new WalletNotConnectedError();
-        let records = (await requestRecords!('zns_registry_v1_3.aleo')) || '';
+        let records = (await requestRecords!('zns_registry_v1_4.aleo')) || '';
         records = records.filter((rec) => {
             return !rec.spent;
         });

@@ -129,7 +129,7 @@ const ProfileSubnames: NextPageWithLayout = () => {
     const dataFetch2 = async () => {
         const response = await (
           await fetch(
-            "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_3.aleo/mapping/primary_name/" + publicKey,
+            "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_4.aleo/mapping/primary_name/" + publicKey,
             {headers: {'Content-Type': 'application/json'}, method: "GET"}
           )
         ).json();
@@ -144,7 +144,7 @@ const ProfileSubnames: NextPageWithLayout = () => {
         let encoded_name : string = encode_name(name.replace('.zexe',''))
         const response = await (
           await fetch(
-            "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_3.aleo/mapping/domains/%7Btld:6837765u128,name:" + encoded_name + "u128,subname:0u128%7D",
+            "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_4.aleo/mapping/domains/%7Btld:6837765u128,name:" + encoded_name + "u128,subname:0u128%7D",
             {headers: {'Content-Type': 'application/json'}, method: "GET"}
           )
         ).json();

@@ -83,7 +83,7 @@ const HomePage: NextPageWithLayout = () => {
 
   const { wallet, publicKey } = useWallet();
 
-  let programId = 'zns_registry_v1_3.aleo';
+  let programId = 'zns_registry_v1_4.aleo';
   let [functionName, setFunctionName] = useState('create_domain_public');
   // let [fee, setFee] = useState<number | undefined>();
   let fee = 3000000;
@@ -209,7 +209,7 @@ const HomePage: NextPageWithLayout = () => {
       suggBox.innerHTML = listData;
       const datam = await (
         await fetch(
-          "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_3.aleo/mapping/domain_taken/%7Btld:6837765u128,name:" + encoded_name + "u128,subname:0u128%7D",
+          "https://vm.aleo.org/api/testnet3/program/zns_registry_v1_4.aleo/mapping/domain_taken/%7Btld:6837765u128,name:" + encoded_name + "u128,subname:0u128%7D",
           {headers: {'Content-Type': 'application/json'}, method: "GET"}
         )
       ).json();
