@@ -237,12 +237,21 @@ const HomePage: NextPageWithLayout = () => {
       setFunctionName((!isOn ? 'create_domain_private' : 'create_domain_public'));
     }
     const toggleCheckReg = () => {
+      if (isCheckedReg){
+        setRegistrar('');
+      } else {
+        setRegistrar("0");
+      }
       setIsCheckedReg(!isCheckedReg);
-      setRegistrar('0')
+
     }
     const toggleCheckRes = () => {
+      if (isCheckedRes){
+        setResolver('');
+      } else {
+        setResolver("0");
+      }
       setIsCheckedRes(!isCheckedRes);
-      setResolver('0')
     }
     const [isSubmitted, setIsSubmitted] = useState(false);
     const toggleSubmission = () => {
@@ -251,6 +260,12 @@ const HomePage: NextPageWithLayout = () => {
     };
     useEffect(() => {
         if(showModal){
+          if (isCheckedReg){
+            document.getElementById("registrar_box")!.value = '';
+          }
+          if (isCheckedRes){
+            document.getElementById("resolver_box")!.value = '';
+          }
           const inputBox1: HTMLInputElement = document.getElementById("registrar_box")!;
           inputBox1?.addEventListener("keyup", (e: KeyboardEvent) => {
             let userData1: string = (e.target as HTMLInputElement).value; //user entered data
