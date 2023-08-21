@@ -5,10 +5,7 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import cn from 'classnames';
 import routes from '@/config/routes';
-import ActiveLink from '@/components/ui/links/active-link';
-import AnchorLink from '@/components/ui/links/anchor-link';
-import { RangeIcon } from '@/components/icons/range-icon';
-import { ExportIcon } from '@/components/icons/export-icon';
+import ActiveLink from '@/components/ui/links/active-link2';
 import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
@@ -17,32 +14,20 @@ const Listbox = dynamic(() => import('@/components/ui/list-box'));
 
 const baseMenu = [
   {
-    name: 'Sign',
-    value: routes.sign,
+    name: 'Profile',
+    value: routes.profileProfile,
   },
   {
-    name: 'Decrypt',
-    value: routes.decrypt,
-  },
-  {
-    name: 'Records',
-    value: routes.records,
+    name: 'Subnames',
+    value: routes.profileSubnames,
   },
   {
     name: 'Transfer',
-    value: routes.transfer,
+    value: routes.profileTransfer,
   },
   {
-    name: 'Execute',
-    value: routes.execute,
-  },
-  {
-    name: 'Deploy',
-    value: routes.deploy,
-  },
-  {
-    name: 'Home',
-    value: routes.home,
+    name: 'More',
+    value: routes.profileMore,
   },
 ];
 
@@ -51,16 +36,15 @@ function ActiveNavLink({ href, title, isActive, className }: any) {
     <ActiveLink
       href={href}
       className={cn(
-        'relative z-[1] inline-flex items-center py-1.5 px-3',
+        'relative z-[1] inline-flex items-center text-md py-1.5 px-3',
         className
       )}
-      activeClassName="font-medium text-white"
+      activeClassName="font-medium text-white dark:text-white"
     >
       <span>{title}</span>
       {isActive && (
         <motion.span
-          className="absolute left-0 right-0 bottom-0 -z-[1] h-full w-full rounded-lg bg-brand shadow-large"
-          layoutId="activeNavLinkIndicator"
+          className="absolute left-0 right-0 bottom-0 -z-[2] h-full w-full rounded-lg bg-brand shadow-large"
         />
       )}
     </ActiveLink>
@@ -75,15 +59,25 @@ export default function Base({ children }: React.PropsWithChildren<{}>) {
     (item) => item.value === router.pathname
   );
   let [selectedMenuItem, setSelectedMenuItem] = useState(baseMenu[0]);
-  function handleRouteOnSelect(path: string) {
-    router.push(path);
+  function handleRouteOnSelect(url: string) {
+    router.push({path: url, query: { name: nameParam }});
   }
   useEffect(() => {
     setSelectedMenuItem(baseMenu[currentPath]);
   }, [currentPath]);
+
+
+    let [nameParam, setNameParam] = useState('');
+    useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        if(queryParams.get("name") !== null){
+            setNameParam(queryParams.get("name"));
+        }
+    });
+
   return (
-    <div className="pt-8 text-sm xl:pt-10">
-      <div className="mx-auto w-full rounded-lg bg-white p-5 pt-4 shadow-card dark:bg-light-dark xs:p-6 xs:pt-5">
+    <div className="pt-8 text-lg">
+      <div className="mx-auto w-[900px] rounded-lg bg-white p-5 pt-4 shadow-card dark:bg-light-dark xs:p-6 xs:pt-5">
         <nav className="mb-5 min-h-[40px] border-b border-dashed border-gray-200 pb-4 uppercase tracking-wider dark:border-gray-700 xs:mb-6 xs:pb-5 xs:tracking-wide">
           {isMounted && ['xs'].indexOf(breakpoint) !== -1 && (
             <Listbox
@@ -93,24 +87,14 @@ export default function Base({ children }: React.PropsWithChildren<{}>) {
               onSelect={(path) => handleRouteOnSelect(path)}
               className="w-full"
             >
-              <AnchorLink
-                href={routes.charts}
-                className="inline-flex items-center justify-between gap-1.5 rounded-md px-3 py-2 text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700/70"
-              >
-                Charts
-                <ExportIcon className="h-auto w-2.5" />
-              </AnchorLink>
-              <button className="inline-flex items-center justify-between gap-1.5 rounded-md px-3 py-2 uppercase text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700/70">
-                Settings
-                <RangeIcon className="h-auto w-3" />
-              </button>
+
             </Listbox>
           )}
-          <div className="hidden items-center justify-between text-gray-600 dark:text-gray-400 sm:flex">
+          <div className="hidden items-center justify-between text-gray-600 dark:text-gray-400 sm:flex flex">
             {baseMenu.map((item) => (
               <ActiveNavLink
                 key={item.name}
-                href={item.value}
+                href={(nameParam === '' ? item.value : item.value + '?name='+ nameParam)}
                 title={item.name}
                 isActive={item.value === router.pathname}
               />

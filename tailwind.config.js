@@ -22,6 +22,10 @@ module.exports = {
         body: '#fcfcfc',
         dark: '#0D1321',
         'light-dark': '#171e2e',
+        'crazy' : '#660099',
+        'regal-blue' :'#146cfa',
+        'super-teal' : '#48c7db',
+        'soft-lavender' : '#6464ff',
       },
       spacing: {
         13: '3.375rem',
@@ -38,6 +42,7 @@ module.exports = {
       },
       fontFamily: {
         body: ['Fira Code', 'monospace'],
+        'bruno': ['Bruno Ace', 'cursive'],
       },
       fontSize: {
         '13px': ['13px', '18px'],

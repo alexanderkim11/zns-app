@@ -5,6 +5,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
+import { motion } from 'framer-motion';
 
 class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -23,10 +24,11 @@ class CustomDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {/*Below we add the modal wrapper*/}
+          <div id="modal-root"></div>
         </body>
       </Html>
     );
   }
 }
-
 export default CustomDocument;

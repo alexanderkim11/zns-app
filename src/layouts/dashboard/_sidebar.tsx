@@ -5,51 +5,20 @@ import Scrollbar from '@/components/ui/scrollbar';
 import Button from '@/components/ui/button';
 import routes from '@/config/routes';
 import { useDrawer } from '@/components/drawer-views/context';
-import { ChevronForward } from '@/components/icons/chevron-forward';
 import { HomeIcon } from '@/components/icons/home';
-import { FarmIcon } from '@/components/icons/farm';
-import { ExchangeIcon } from '@/components/icons/exchange';
 import { Close } from '@/components/icons/close';
-import { Unlocked } from '@/components/icons/unlocked';
-import { OvenIcon } from '@/components/icons/oven';
-import { Sun } from '@/components/icons/sun';
-
+import { FarmIcon } from '@/components/icons/farm';
 const menuItems = [
   {
-    name: 'Getting Started',
+    name: 'Home',
     icon: <HomeIcon />,
-    href: routes.gettingStarted,
+    href: routes.home,
   },
-  {
-    name: 'Sign',
-    icon: <ExchangeIcon />,
-    href: routes.sign,
-  },
-  {
-    name: 'Decrypt',
-    icon: <Unlocked />,
-    href: routes.decrypt,
-  },
-  {
-    name: 'Records',
-    icon: <FarmIcon />,
-    href: routes.records,
-  },
-  {
-    name: 'Transfer',
-    icon: <ChevronForward />,
-    href: routes.transfer,
-  },
-  {
-    name: 'Execute',
-    icon: <OvenIcon />,
-    href: routes.execute,
-  },
-  {
-    name: 'Deploy',
-    icon: <Sun />,
-    href: routes.deploy,
-  },
+  // {
+  //   name: 'Profile',
+  //   icon: <FarmIcon />,
+  //   href: routes.profileProfile,
+  // },
 ];
 
 type SidebarProps = {
@@ -61,7 +30,7 @@ export default function Sidebar({ className }: SidebarProps) {
   return (
     <aside
       className={cn(
-        'top-0 z-40 h-full w-full max-w-full border-dashed border-gray-200 bg-body ltr:left-0 ltr:border-r rtl:right-0 rtl:border-l dark:border-gray-700 dark:bg-dark xs:w-80 xl:fixed  xl:w-72 2xl:w-80',
+        'top-0 z-40 h-full w-full max-w-full border-dashed border-gray-200 bg-crazy ltr:left-0 ltr:border-r rtl:right-0 rtl:border-l dark:border-gray-700 dark:bg-light-dark xs:w-80 2xl:w-80',
         className
       )}
     >
