@@ -1,6 +1,6 @@
 const routes = {
-  gettingStarted: '/home',
-  home: '/home',
+  index :'/',
+  home: '/index',
   profileProfile : '/profile/profile',
   profileSubnames : '/profile/subnames',
   profileTransfer : '/profile/transfer',
