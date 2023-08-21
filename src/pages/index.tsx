@@ -107,13 +107,13 @@ const HomePage: NextPageWithLayout = () => {
   }
 
   const format1 = (userData : string) => {
-    let formatted: string = userData.toLowerCase().replace(/[^(\x61-\x7A||\x30-\x39 || \x5F)]/g, "");
+    let formatted: string = userData.toLowerCase().replace(/[^(\x61-\x7A||\x30-\x39 || \x5F || \x2E)]/g, "");
     return formatted
   }
 
   const format2 = () => {
     const inputBox: HTMLInputElement = document.querySelector("resolver_box")!;
-    let formatted: string = inputBox?.value.toLowerCase().replace(/[^(\x61-\x7A||\x30-\x39 || \x5F)]/g, "");
+    let formatted: string = inputBox?.value.toLowerCase().replace(/[^(\x61-\x7A||\x30-\x39 || \x5F || \x2E)]/g, "");
     console.log(formatted) 
   }
 
