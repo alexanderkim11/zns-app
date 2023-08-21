@@ -1,11 +1,5 @@
 const routes = {
-  gettingStarted: '/',
-  sign: '/sign',
-  decrypt: '/decrypt',
-  records: '/records',
-  transfer: '/transfer',
-  execute: '/execute',
-  deploy: '/deploy',
+  gettingStarted: '/home',
   home: '/home',
   profileProfile : '/profile/profile',
   profileSubnames : '/profile/subnames',
